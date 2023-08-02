@@ -42,6 +42,28 @@ class ViewController: UIViewController {
             task?.resume() // 開始下載圖片
             */
             
+            // downloadTask: 下載圖片、資料 // return url
+            let newTask = session?.downloadTask(with: imageURL, completionHandler: {
+                (url, urlResponse, error) in
+                if error != nil {
+                    print(error!.localizedDescription)
+                    return
+                }
+                
+                if let loadedURL = url{
+                    do{
+                        let loadedImage = UIImage(data: try Data(contentsOf: loadedURL))
+                        DispatchQueue.main.async {
+                            self.myImageView.image = loadedImage
+                        }
+                    }catch{
+                        print(error.localizedDescription)
+                    }
+                }
+            })
+            newTask?.resume()
+            
+            /*
             // global queue 共時佇列
             DispatchQueue.global().async {
                 do{
@@ -57,6 +79,7 @@ class ViewController: UIViewController {
                     print(error.localizedDescription)
                 }
             }
+            */
         }
     }
 
