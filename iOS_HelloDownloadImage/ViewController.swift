@@ -46,7 +46,12 @@ class ViewController: UIViewController {
             let newTask = session?.downloadTask(with: imageURL, completionHandler: {
                 (url, urlResponse, error) in
                 if error != nil {
-                    print(error!.localizedDescription)
+                    let errorCode = (error! as NSError).code // 轉型成 NSError
+                    if errorCode == -1009 {
+                        print("No Internet Connection") // or alert
+                    }else{
+                        print(error!.localizedDescription)
+                    }
                     return
                 }
                 
