@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // String -> URL -> Data -> UIImage
-        let imageAddress:String = "https://cdn3.macworld.co.uk/cmsdata/features/3523633/swift_1200home_thumb800.jpg"
+        let imageAddress:String = "https://inapp.com/wp-content/uploads/elementor/thumbs/swift-01-q05qmwpi08qczw6n86y04p8o0662t41v843uww1xoy.png"
         if let imageURL = URL(string: imageAddress){
             
             // global queue 共時佇列
